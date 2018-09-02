@@ -26,3 +26,10 @@ function billing(){
   document.getElementById('rooms').style.display="none";
   document.getElementById('billing').style.display="block";
 }
+
+function checkdate() {
+  if (document.getElementById('admitdate')>document.getElementById('dischargedate')) {
+    
+    alert("Discharge Date cannot be greater than Admit Date")
+  }
+}

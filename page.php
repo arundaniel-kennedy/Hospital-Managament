@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Hospital</title>
     <link rel="stylesheet" href="main.css" />
-
+    <?php   include 'connection.php'; ?>
   </head>
   <body onpageshow="patientdetails()">
 
@@ -76,6 +76,30 @@
       </div>
 
       <div id="doctordetails">
+        <center>
+          <table>
+            <tr>
+              <td>Doctor id</td>
+              <td>Doctor Name</td>
+            </tr>
+            <?php
+            $sql = "select * from doctor";
+            $result = mysqli_query($per, $sql);
+
+            if (mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>".$row["doctorid"]."</td>";
+                echo "<td>".$row["doctorname"]."</td>";
+                echo "</tr>";
+              }
+            }
+            else echo "0 results";
+            ?>
+          </table>
+        </center>
+<br />
+
         <form action="checkdoctor.php" method="post">
 
           <div>
@@ -84,7 +108,7 @@
           </div><br />
           <div>
             <label>Doctor Id:</label><br />
-            <input type="text" name="doctorid" placeholder="Doctor Id">
+            <input type="text" name="doctorid" placeholder="Doctor Id" required>
           </div><br />
           <div>
             <label>Dept:</label><br />
@@ -103,34 +127,35 @@
       </div>
 
       <div id="rooms">
-        <form action="" >
+        <form action="addroom.php" onsubmit="checkdate()" method="post">
 
           <div>
-            <label>Room no:</label><br />
-            <input type="text" name="roomno" placeholder="Room no" />
+            <label>Patient Id:</label><br />
+            <input type="text" name="patid" id="patid" placeholder="Patient ID" required/>
           </div><br />
+
           <div>
             <label>Type of room availed:</label><br />
-            <input type="radio" name="roomtype" value="normal" />normal
-            <input type="radio" name="roomtype" value="ac">ac
-            <input type="radio" name="roomtype" value="super deluxe">deluxe
+            <input type="radio" name="roomtype" value="normal" required/>normal
+            <input type="radio" name="roomtype" value="ac" required>ac
+            <input type="radio" name="roomtype" value="super deluxe" required>deluxe
           </div><br />
           <div>
             <label>Availed Food:</label><br />
-            <input type="radio" name="food" value="yes">yes
-            <input type="radio" name="food" value="no">no
+            <input type="radio" name="food" value="yes" required>yes
+            <input type="radio" name="food" value="no" required>no
           </div><br />
           <div>
             <label>Admitted Date:</label><br />
-            <input type="date" name="admitdate" value="" placeholder="admitdate">
+            <input type="date" name="admitdate" id="admitdate" placeholder="admitdate" required>
           </div><br />
           <div>
             <label>Discharge Date:</label><br />
-            <input type="date" name="dischargedate" value="" placeholder="dischargedate">
+            <input type="date" name="dischargedate" id="dischargedate" placeholder="dischargedate" required>
           </div><br />
           <div>
-            <input type="submit" />
-            <input type="reset" />
+            <input type="submit" value="submit" />
+            <input type="reset" value="reset"/>
           </div>
         </form>
       </div>

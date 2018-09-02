@@ -6,22 +6,22 @@ $doctorid = $_POST['doctorid'];
 $dept= $_POST['dept'];
 $time = $_POST['time'];
 
-echo $doctorid.$doctorname.$dept.$time."<br />";
-$sql = "select * from login";
+//echo $doctorid.$doctorname.$dept.$time."<br />";
+
+$sql = "select * from doctor";
 $result = mysqli_query($per, $sql);
 
 if (mysqli_num_rows($result) > 0) {
   while($row = mysqli_fetch_assoc($result)) {
-      echo $row["doctorid"].$row["doctorname"].$row["dept"].$row["time"];
+      //echo $row["doctorid"].$row["doctorname"].$row["dept"].$row["time"];
 
-      if($doctorid === $row["doctorid"] && $doctorname === $row["doctorname"] && $dept === $row["dept"]){
+      if($doctorid === $row["doctorid"] && $doctorname === $row["doctorname"] && $dept === $row["dept"] && $time === $row["time"]){
         echo '<script type="text/javascript"> window.alert("Doctor available");</script>';
-        header("refresh:50 ; url=page.php");
       }
       else{
         echo '<script type="text/javascript"> window.alert("Doctor not available");</script>';
-        header("refresh:50 ; url=page.php");
       }
+        header("refresh:0.00001 ; url=page.php");
   }
 }
 else {

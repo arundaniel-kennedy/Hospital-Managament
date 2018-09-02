@@ -8,17 +8,16 @@
   $phone=$_POST['tel'];
   $symptoms=$_POST['symptoms'];
   $admitdate=$_POST['admitdate'];
-
-    $dob='1981-10-07';
-    $age = (date('Y') - date('Y',strtotime($age)));
+  $age = (date('Y') - date('Y',strtotime($age)));
 
   $sql = "INSERT INTO patient (patientid,name,age,gender,address,phone,symptoms,admitdate) VALUES (null,'$name','$age','$gender','$address','$phone','$symptoms','$admitdate')";
 
   if (mysqli_query($per, $sql)) {
-    echo '<script type="text/javascript"> window.alert("record created successfully");</script>';
+    $lastid = mysqli_insert_id($per);
+    echo 'Patient Record added successfully with id::'.$lastid;
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($per);
 }
 
-  header("refresh:0.0001 ; url=page.php");
+  header("refresh:3 ; url=page.php");
  ?>
