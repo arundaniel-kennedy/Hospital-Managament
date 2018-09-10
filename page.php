@@ -127,7 +127,7 @@
       </div>
 
       <div id="rooms">
-        <form action="addroom.php" onsubmit="checkdate()" method="post">
+        <form action="addroom.php" onsubmit="return checkdate()" method="post">
 
           <div>
             <label>Patient Id:</label><br />

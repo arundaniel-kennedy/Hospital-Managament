@@ -29,7 +29,16 @@ function billing(){
 
 function checkdate() {
   if (document.getElementById('admitdate')>document.getElementById('dischargedate')) {
-    
-    alert("Discharge Date cannot be greater than Admit Date")
+    alert("Discharge Date cannot be greater than Admit Date");
+    return false;
   }
+  return true;
+}
+
+function validate(){
+  if(login.password.value.length<8 ){
+    alert("Password must be 8 characters long");
+    return false;
+  }
+  return true;
 }
