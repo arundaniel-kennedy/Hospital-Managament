@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="main.css" />
     <?php   include 'connection.php'; ?>
   </head>
-  <body onpageshow="patientdetails()">
+  <body onload="patientdetails()">
 
     <header class="header">
       ABC Hospital
@@ -91,6 +91,7 @@
                 echo "<tr>";
                 echo "<td>".$row["doctorid"]."</td>";
                 echo "<td>".$row["doctorname"]."</td>";
+                echo "<td>".$row["dept"]."</td>";
                 echo "</tr>";
               }
             }
@@ -161,7 +162,7 @@
       </div>
 
       <div id="billing">
-
+        <form action="billing"
       </div>
 
     </div>

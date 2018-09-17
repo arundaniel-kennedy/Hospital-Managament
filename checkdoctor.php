@@ -15,11 +15,16 @@ if (mysqli_num_rows($result) > 0) {
   while($row = mysqli_fetch_assoc($result)) {
       //echo $row["doctorid"].$row["doctorname"].$row["dept"].$row["time"];
 
-      if($doctorid === $row["doctorid"] && $doctorname === $row["doctorname"] && $dept === $row["dept"] && $time === $row["time"]){
-        echo '<script type="text/javascript"> window.alert("Doctor available");</script>';
+      if($doctorid === $row["doctorid"] && $doctorname === $row["doctorname"] && $dept === $row["dept"]){
+        if ($time >= $row["time"]) {
+          echo '<script type="text/javascript"> window.alert("Doctor available");</script>';
+        }
+        else{
+          echo '<script type="text/javascript"> window.alert("Doctor not available");</script>';
+        }
       }
       else{
-        echo '<script type="text/javascript"> window.alert("Doctor not available");</script>';
+        echo '<script type="text/javascript"> window.alert(" Check Doctor information");</script>';
       }
         header("refresh:0.00001 ; url=page.php");
   }
