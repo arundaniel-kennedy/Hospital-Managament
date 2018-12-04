@@ -162,7 +162,9 @@
       </div>
 
       <div id="billing">
-        <form action="billing"
+        <div>
+          Hello
+        </div>
       </div>
 
     </div>
